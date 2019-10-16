@@ -1,5 +1,5 @@
 {
-  "name": "@antv/component",
+  "name": "@xtayr/component",
   "version": "0.3.8",
   "description": "",
   "browser": "build/component.js",
@@ -7,7 +7,7 @@
   "module": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:antvis/component.git"
+    "url": "https://github.com/ScOrPiOzzy/component.git"
   },
   "bugs": {
     "url": "https://github.com/antvis/component/issues"
@@ -17,7 +17,7 @@
     "component",
     "component"
   ],
-  "author": "https://github.com/orgs/antvis/people",
+  "author": "https://github.com/orgs/ScOrPiU5/people",
   "license": "MIT",
   "devDependencies": {
     "@antv/coord": "~0.1.0",
