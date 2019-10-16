@@ -74,7 +74,17 @@ class Html extends Guide {
   _setDomPosition(parentDom, childDom, point) {
     const self = this;
     const alignX = self.get('alignX');
+    if (Util.isFunction(alignX)) {
+      var xScales = self.get('xScales');
+      var yScales = self.get('yScales');
+      alignX = alignX(xScales, yScales);
+    }
     const alignY = self.get('alignY');
+    if (Util.isFunction(alignY)) {
+      var xScales = self.get('xScales');
+      var yScales = self.get('yScales');
+      alignY = alignY(xScales, yScales);
+    }
     const domWidth = DomUtil.getOuterWidth(childDom);
     const domHeight = DomUtil.getOuterHeight(childDom);
 
@@ -109,10 +119,20 @@ class Html extends Guide {
     }
 
     const offsetX = self.get('offsetX');
+    if (Util.isFunction(offsetX)) {
+      var xScales = self.get('xScales');
+      var yScales = self.get('yScales');
+      offsetX = offsetX(xScales,yScales);
+    }
     if (offsetX) {
       position.x += offsetX;
     }
     const offsetY = self.get('offsetY');
+    if (Util.isFunction(offsetY)) {
+      var xScales = self.get('xScales');
+      var yScales = self.get('yScales');
+      offsetY = offsetY(xScales,yScales);
+    }
     if (offsetY) {
       position.y += offsetY;
     }
