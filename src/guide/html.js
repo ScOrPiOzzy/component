@@ -45,6 +45,19 @@ class Html extends Guide {
    */
   render(coord, container) {
     const self = this;
+
+    const beforeRender = self.get('beforeRender');
+    if (beforeRender) {
+      beforeRender();
+    }
+
+    let visible = self.get('visible');
+    if (Util.isFunction(visible)) {
+      visible = visible();
+    }
+    if (!visible) {
+      return;
+    }
     const position = self.parsePoint(coord, self.get('position'));
     if (!position) {
       return;
@@ -68,21 +81,20 @@ class Html extends Guide {
 
     self._setDomPosition(wrapperNode, htmlNode, position);
     self.set('el', wrapperNode);
-
   }
 
   _setDomPosition(parentDom, childDom, point) {
     const self = this;
     let alignX = self.get('alignX');
     if (Util.isFunction(alignX)) {
-      var xScales = self.get('xScales');
-      var yScales = self.get('yScales');
+      const xScales = self.get('xScales');
+      const yScales = self.get('yScales');
       alignX = alignX(xScales, yScales);
     }
     let alignY = self.get('alignY');
     if (Util.isFunction(alignY)) {
-      var xScales = self.get('xScales');
-      var yScales = self.get('yScales');
+      const xScales = self.get('xScales');
+      const yScales = self.get('yScales');
       alignY = alignY(xScales, yScales);
     }
     const domWidth = DomUtil.getOuterWidth(childDom);
@@ -120,18 +132,18 @@ class Html extends Guide {
 
     let offsetX = self.get('offsetX');
     if (Util.isFunction(offsetX)) {
-      var xScales = self.get('xScales');
-      var yScales = self.get('yScales');
-      offsetX = offsetX(xScales,yScales);
+      const xScales = self.get('xScales');
+      const yScales = self.get('yScales');
+      offsetX = offsetX(xScales, yScales);
     }
     if (offsetX) {
       position.x += offsetX;
     }
     let offsetY = self.get('offsetY');
     if (Util.isFunction(offsetY)) {
-      var xScales = self.get('xScales');
-      var yScales = self.get('yScales');
-      offsetY = offsetY(xScales,yScales);
+      const xScales = self.get('xScales');
+      const yScales = self.get('yScales');
+      offsetY = offsetY(xScales, yScales);
     }
     if (offsetY) {
       position.y += offsetY;
